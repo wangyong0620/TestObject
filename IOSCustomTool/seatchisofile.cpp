@@ -29,6 +29,7 @@ void SeatchISOFile::initSearchISOFile()
 
     m_searchFile = new DFileChooserEdit(this);
     m_searchFile->setNameFilters(QStringList("*.iso"));
+    m_searchFile->setMinimumWidth(500);
 
     m_nextButton = new DPushButton(this);
     m_nextButton->setEnabled(false);
@@ -38,7 +39,7 @@ void SeatchISOFile::initSearchISOFile()
     QVBoxLayout *layOut = new QVBoxLayout(this);
     layOut->addSpacing(20);
     layOut->addWidget(m_label,0,Qt::AlignLeft);
-    layOut->addWidget(m_searchFile);
+    layOut->addWidget(m_searchFile,0,Qt::AlignCenter);
     layOut->addSpacing(300);
     layOut->addWidget(m_nextButton,0,Qt::AlignCenter);
     layOut->addSpacing(45);

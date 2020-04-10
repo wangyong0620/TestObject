@@ -28,13 +28,12 @@ void Preparation::initPreparation()
     DFontSizeManager::instance()->bind(m_fontLabel, DFontSizeManager::T2);
 
     m_floatMessageLayout = new QVBoxLayout(this);
-
     m_showFileWidget = new DWidget(this);
     m_showFileWidget->setLayout(m_floatMessageLayout);
 
     m_showFileLayout = new QVBoxLayout();
+    m_showFileLayout->addWidget(m_fontLabel,Qt::AlignCenter);
     m_showFileLayout->addWidget(m_showFileWidget,0,Qt::AlignCenter);
-    m_showFileLayout->addWidget(m_fontLabel,0,Qt::AlignCenter);
     m_showFileLayout->addStretch();
 
     m_showWidget = new DWidget(this);
@@ -47,8 +46,7 @@ void Preparation::initPreparation()
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addSpacing(20);
     layout->addWidget(m_label);
-    //    layout->addLayout(hLayout);
-    layout->addWidget(m_showWidget,0,Qt::AlignCenter);
+    layout->addWidget(m_showWidget);
     layout->setStretchFactor(m_showWidget,3);
     layout->addWidget(m_searchButton,0,Qt::AlignCenter);
     layout->addWidget(m_nextButton,0,Qt::AlignCenter);
@@ -56,10 +54,10 @@ void Preparation::initPreparation()
     this->setLayout(layout);
 
     connect(m_searchButton,&DCommandLinkButton::clicked,this,&Preparation::openFilePath);
-//    pDFloatMessage->hide();
     connect(m_nextButton,&DPushButton::clicked,[=]() {
         emit sendSignalSwitchWindow();
     });
+    m_showFileWidget->hide();
 }
 
 void Preparation::openFilePath()
@@ -83,12 +81,12 @@ void Preparation::openFilePath()
     pDFloatMessage->setFont(font);
     pDFloatMessage->setIcon(icon);
     pDFloatMessage->setMessage(fileName);
+    pDFloatMessage->setBlurBackgroundEnabled(true);
     pDFloatMessage->show();
 
     m_floatMessageLayout->addWidget(pDFloatMessage,0,Qt::AlignTop);
-
     m_list.append(pDFloatMessage);
-    m_showFileLayout->addWidget(pDFloatMessage,0,Qt::AlignTop);
+
     m_fontLabel->hide();
     m_showFileWidget->show();
 

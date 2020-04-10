@@ -32,10 +32,11 @@ MainWindow::MainWindow(QWidget *parent) : DMainWindow(parent)
     initRightView();
 
     QHBoxLayout *mainLayout = new QHBoxLayout(this);
+
     mainLayout->addWidget(m_liftFrame);
     mainLayout->addWidget(m_rightFrame);
     mainLayout->setStretchFactor(m_liftFrame,1);
-    mainLayout->setStretchFactor(m_rightFrame,2);
+    mainLayout->setStretchFactor(m_rightFrame,3);
 
     QWidget *centerWidget = new QWidget(this);
     setCentralWidget(centerWidget);
@@ -48,8 +49,8 @@ MainWindow::MainWindow(QWidget *parent) : DMainWindow(parent)
 void MainWindow::initLiftView()
 {
     m_liftFrame = new DFrame(this);
-
     m_liftView = new DListView(this);
+    m_liftView->setMinimumWidth(200);
     m_liftView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     standarModel = new QStandardItemModel(this);
     DStandardItem *itemOne = new DStandardItem(QIcon::fromTheme("dcc_inactive1"),"选择ISO");
@@ -119,6 +120,7 @@ void MainWindow::initRightView()
     connect(midInstall,&MidtermInstallation::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
     connect(lastClear,&LastCleaning::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
     connect(searchKerenl,&SearchKernel::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
+    connect(print,&Print::signalSendCloce,this,&MainWindow::close);
 }
 
 void MainWindow::setShowInterfaceSlot(QModelIndex index)

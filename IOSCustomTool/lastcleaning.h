@@ -32,6 +32,8 @@ private:
     DWidget *m_showFileWidget;
     DCommandLinkButton *m_searchButton;
     QList<DFloatingMessage *> m_list;
+    QVBoxLayout *m_floatMessageLayout;
+    DWidget *m_showWidget;
 };
 
 #endif // LASTCLEANING_H

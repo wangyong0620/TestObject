@@ -83,10 +83,9 @@ void MidtermInstallation::openFilePath()
     pDFloatMessage->setIcon(icon);
     pDFloatMessage->setMessage(fileName);
     pDFloatMessage->show();
-    m_floatMessageLayout->addWidget(pDFloatMessage,0,Qt::AlignTop);
-
+    pDFloatMessage->setBlurBackgroundEnabled(true);
     m_list.append(pDFloatMessage);
-    m_showFileLayout->addLayout(m_floatMessageLayout);
+    m_floatMessageLayout->addWidget(pDFloatMessage,0,Qt::AlignTop);
 
     m_fontLabel->hide();
     m_showFileWidget->show();

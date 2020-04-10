@@ -10,5 +10,19 @@
         <file>icons/deepin/builtin/light/icons/dcc_inactive7_20px.svg</file>
         <file>icons/deepin/builtin/light/icons/dcc_inactive8_20px.svg</file>
         <file>icons/deepin/builtin/light/icons/dcc_inactive9_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_inactive4_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_inactive5_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_inactive6_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_inactive7_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_inactive8_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_inactive9_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_inactive1_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_icon_64px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_inactive2_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_inactive3_20px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_fail_110px.svg</file>
+        <file>icons/deepin/builtin/dark/icons/dcc_progress_111px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_fail_110px.svg</file>
+        <file>icons/deepin/builtin/light/icons/dcc_progress_111px.svg</file>
     </qresource>
 </RCC>

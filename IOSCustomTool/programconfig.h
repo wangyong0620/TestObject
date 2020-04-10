@@ -31,10 +31,10 @@ private:
     DPushButton *m_nextButton;
     DLabel *m_label;
     DLabel *m_showFont;
-    DFileDialog *m_fileDialog;
     DWidget *m_showFileWidget;
-    QVBoxLayout *pHBoxLayout2;
     QList<DFloatingMessage *> m_list;
+    QVBoxLayout *m_widgetLayout;
+    QVBoxLayout *m_floatMessageLayout;
 };
 
 #endif // PROGRAMCONFIG_H
