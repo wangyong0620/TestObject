@@ -71,6 +71,7 @@ void ProgramConfig::initProgramConfig()
         emit sendSignalSwitchWindow();
     });
     m_showFileWidget->hide();
+    m_clearButton->hide();
 }
 
 void ProgramConfig::clearAllFile()
@@ -82,6 +83,7 @@ void ProgramConfig::clearAllFile()
 
     m_showFileWidget->hide();
     m_showFont->show();
+    m_clearButton->hide();
 }
 
 void ProgramConfig::openFilePath()
@@ -116,7 +118,7 @@ void ProgramConfig::openFilePath()
 
     m_showFont->hide();
     m_showFileWidget->show();
-
+    m_clearButton->show();
     connect(pDFloatMessage,&DFloatingMessage::closeButtonClicked,this,&ProgramConfig::deleteList);
 }
 

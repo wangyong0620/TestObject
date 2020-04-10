@@ -2,11 +2,9 @@
 #include "seatchisofile.h"
 #include "searcharchitecture.h"
 #include "programconfig.h"
-#include "preparation.h"
-#include "midterminstallation.h"
-#include "lastcleaning.h"
 #include "searchkernel.h"
 #include "print.h"
+#include "sharedclass.h"
 
 #include <DLabel>
 #include <DStandardItem>
@@ -14,7 +12,7 @@
 #include <QHBoxLayout>
 #include <QStandardItemModel>
 #include <QDebug>
-//#include <qOverload>
+#include <QAction>
 
 MainWindow::MainWindow(QWidget *parent) : DMainWindow(parent)
 {    
@@ -92,11 +90,15 @@ void MainWindow::initRightView()
     SeatchISOFile *searchIssoFile = new SeatchISOFile(this);
     SearchArchitecture *searchArchitecture = new SearchArchitecture(this);
     ProgramConfig *programConfig = new ProgramConfig(this);
-    Preparation *preparation = new Preparation(this);
-    MidtermInstallation *midInstall = new  MidtermInstallation(this);
-    LastCleaning *lastClear = new LastCleaning(this);
+//    Preparation *preparation = new Preparation(this);
+//    MidtermInstallation *midInstall = new  MidtermInstallation(this);
+//    LastCleaning *lastClear = new LastCleaning(this);
     SearchKernel *searchKerenl = new SearchKernel(this);
     Print *print = new Print(this);
+
+    SharedClass *preparation = new SharedClass("前期准备","请选择前期准备");
+    SharedClass *midInstall = new SharedClass("中期安装","请选择中期安装");
+    SharedClass *lastClear = new SharedClass("后期清理","请选择后期清理");
 
     m_rightView = new DStackedWidget(this);
     m_rightView->addWidget(searchIssoFile);
@@ -116,9 +118,9 @@ void MainWindow::initRightView()
     connect(searchIssoFile,&SeatchISOFile::sendSignalStopPrintButton,print,&Print::setNextButton);
     connect(searchArchitecture,&SearchArchitecture::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
     connect(programConfig,&ProgramConfig::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
-    connect(preparation,&Preparation::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
-    connect(midInstall,&MidtermInstallation::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
-    connect(lastClear,&LastCleaning::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
+    connect(preparation,&SharedClass::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
+    connect(midInstall,&SharedClass::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
+    connect(lastClear,&SharedClass::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
     connect(searchKerenl,&SearchKernel::sendSignalSwitchWindow,this,&MainWindow::switchWindowSlot);
     connect(print,&Print::signalSendCloce,this,&MainWindow::close);
 }
@@ -151,7 +153,7 @@ void MainWindow::switchWindowSlot()
     QStandardItemModel *model = dynamic_cast<QStandardItemModel *>(m_liftView->model());
     QModelIndex nextIndex = model->index(currIndex.row() + 1,  0); // 当前行的下一行
     qDebug() << "41212" << currIndex << nextIndex;
-*/
+    */
     QModelIndex currIndex = m_liftView->currentIndex();
     QModelIndex nextIndex = currIndex.sibling(currIndex.row() + 1, currIndex.column());
 

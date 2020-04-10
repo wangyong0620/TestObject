@@ -13,11 +13,9 @@ SOURCES += \
     seatchisofile.cpp \
     searcharchitecture.cpp \
     programconfig.cpp \
-    preparation.cpp \
-    midterminstallation.cpp \
-    lastcleaning.cpp \
     searchkernel.cpp \
-    print.cpp
+    print.cpp \
+    sharedclass.cpp
 
 RESOURCES += \        
     resource.qrc
@@ -27,10 +25,8 @@ HEADERS += \
     seatchisofile.h \
     searcharchitecture.h \
     programconfig.h \
-    preparation.h \
-    midterminstallation.h \
-    lastcleaning.h \
     searchkernel.h \
-    print.h
+    print.h \
+    sharedclass.h
 
 DISTFILES +=

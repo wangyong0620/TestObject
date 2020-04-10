@@ -1,5 +1,5 @@
-#ifndef PREPARATION_H
-#define PREPARATION_H
+#ifndef SHAREDCLASS_H
+#define SHAREDCLASS_H
 
 #include <DWidget>
 #include <DLabel>
@@ -9,19 +9,20 @@
 
 #include <QVBoxLayout>
 
-
 DWIDGET_USE_NAMESPACE
 
-class Preparation : public DWidget
+
+class SharedClass : public DWidget
 {
     Q_OBJECT
 public:
-    explicit Preparation(DWidget *parent = nullptr);
-    void initPreparation();
-
+    explicit SharedClass(DWidget *parent = nullptr);
+    SharedClass(QString showFont,QString titelFont,DWidget *parent = nullptr);
+    void initSharedClass(QString &showFont,QString &titelFont);
 
 signals:
     void sendSignalSwitchWindow();
+
 public slots:
     void openFilePath();
     void deleteList();
@@ -31,10 +32,11 @@ private:
     DLabel *m_fontLabel;
     QVBoxLayout *m_showFileLayout;
     DWidget *m_showFileWidget;
-    DWidget *m_showWidget;
     DCommandLinkButton *m_searchButton;
     QList<DFloatingMessage *> m_list;
+    DWidget *m_showWidget;
+//    DFloatingMessage *pDFloatMessage;
     QVBoxLayout *m_floatMessageLayout;
 };
 
-#endif // PREPARATION_H
+#endif // SHAREDCLASS_H

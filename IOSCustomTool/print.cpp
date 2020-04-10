@@ -90,6 +90,7 @@ void Print::initPrint()
     connect(m_time, &QTimer::timeout, this,&Print::setCompressed);
     connect(testTime,&QTimer::timeout,[=]() {
         m_time->stop();
+//        m_value = 100;
         processResult();
     });
 
@@ -106,29 +107,27 @@ void Print::initPrint()
 
 void Print::processResult()
 {
-    qDebug() << m_value;
     if (m_value == 100) {
-//        QIcon img= QIcon::fromTheme("dcc_fail");
-        QPixmap pixmap(":/icons/deepin/builtin/dark/icons/dcc_progress_111px.svg");
-        m_pixmapLabel->setPixmap(pixmap);
+        QIcon icon = QIcon::fromTheme("dcc_progress");
+        QPixmap pixmap1 = icon.pixmap(QSize(110,110));
+//        QPixmap pixmap(":/icons/deepin/builtin/dark/icons/dcc_progress_111px.svg");
+        m_pixmapLabel->setPixmap(pixmap1);
         m_titelLabel->setText("输出成功");
-//        m_compressedSchedule->setValue(m_value);
         m_compressedSchedule->hide();
         m_nextButton->hide();
-//        m_time->stop();
         m_buttonWidget->show();
         m_compressedSchedule->stop();
         m_value = 0;
     } else {
-        QPixmap pixmap(":/icons/deepin/builtin/dark/icons/dcc_fail_110px.svg");
+        QIcon icon = QIcon::fromTheme("dcc_fail");
+        QPixmap pixmap = icon.pixmap(QSize(110,110));
         m_pixmapLabel->setPixmap(pixmap);
         m_titelLabel->setText("输出失败");
         m_messageLabel->setText("制作失败");
         m_detailsLabel->setText("失败原因：未知的错误");
-//        m_compressedSchedule->setValue(m_value);
         m_compressedSchedule->hide();
         m_nextButton->hide();
-//        m_time->stop();
+
         m_buttonWidget->hide();
         m_failButton->show();
         m_compressedSchedule->stop();
